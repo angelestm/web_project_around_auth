@@ -1,0 +1,9 @@
+.userForm__input {
+  width: 100%;
+  background-color: black;
+  border: none;
+  border-bottom: 1px solid #CCCCCC;
+  height: 28px;
+  margin-bottom: 30px;
+  color: #ffffff;
+}

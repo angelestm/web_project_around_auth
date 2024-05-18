@@ -1,0 +1,9 @@
+.userForm__button {
+  background-color: white;
+  height: 50px;
+  border: none;
+}
+
+.userForm__button:hover {
+  background-color: #CCCCCC;
+}
