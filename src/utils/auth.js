@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://register.nomoreparties.co';
+export const BASE_URL = 'https://tripleten.desarrollointerno.com';
 
 export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
@@ -39,6 +39,10 @@ export const authorize = (email, password) => {
       })
       .catch((err) => console.log(err));
 };
+
+export const logOut = () => {
+  localStorage.removeItem('token', '');
+}
 
 export const getToken = (token) => {
   return fetch(`${BASE_URL}/users/me`, {

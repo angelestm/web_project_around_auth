@@ -17,7 +17,7 @@ function Login({onLogin}) {
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   
   useEffect(() => {
-    if (successRegister) setIsInfoOpen(true);
+    if (successRegister) setIsInfoOpen(false);
   }, [successRegister]);
   
   function handleChange(evt) {
@@ -28,16 +28,7 @@ function Login({onLogin}) {
   function handleSubmit(evt){
     evt.preventDefault();
     if (!userCredentials.email || !userCredentials.password) return;
-    
-    auth.authorize(userCredentials.email, userCredentials.password)
-        .then((data) => {
-          if (data.token) {
-            setUserCredentials({ email: '', password: '' });
-            navigate('/');
-            onLogin();
-          }
-        })
-        .catch((err) => console.log(err));
+    onLogin(userCredentials.email, userCredentials.password);
   }
   
   const onCloseInfoTool = () => setIsInfoOpen(false);
@@ -62,7 +53,7 @@ function Login({onLogin}) {
             placeholder="Correo electrónico"
             type="email"
             name="email"
-            minLength="4"
+            minLength="8"
             maxLength="30"
             onChange={handleChange}
             value={userCredentials.email}
@@ -73,18 +64,18 @@ function Login({onLogin}) {
             placeholder="Contraseña"
             type="password"
             name="password"
-            minLength="4"
+            minLength="8"
             maxLength="30"
             onChange={handleChange}
             value={userCredentials.password}
             required
         />
       </UserForm>
-      <InfoToolTip
-          isSuccess={successRegister}
-          isInfoOpen={isInfoOpen}
-          onCloseBtn={onCloseInfoTool}
-      ></InfoToolTip>
+      {/*<InfoToolTip*/}
+      {/*    isSuccess={successRegister}*/}
+      {/*    isInfoOpen={isInfoOpen}*/}
+      {/*    onCloseBtn={onCloseInfoTool}*/}
+      {/*></InfoToolTip>*/}
     </>
   )
 }

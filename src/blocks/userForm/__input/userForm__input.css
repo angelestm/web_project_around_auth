@@ -7,3 +7,9 @@
   margin-bottom: 30px;
   color: #ffffff;
 }
+
+@media screen and (max-width:320px) {
+  .userForm__input {
+    width: 260px;
+  }
+}

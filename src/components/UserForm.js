@@ -9,7 +9,10 @@ function UserForm({
         <div className="userForm__container">
           {children}
         </div>
-        <button className="userForm__button" type="submit" onSubmit={onSubmit}>{buttonText}</button>
+        <button
+            className="userForm__button"
+            type="submit"
+            onSubmit={onSubmit}>{buttonText}</button>
         <Link to={linkSpan} className="userForm__link">{linkText}</Link>
       </form>
   )

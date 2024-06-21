@@ -3,3 +3,8 @@
   flex-direction: row-reverse;
   align-items: center;
 }
+
+@media screen and (max-width:320px) {
+  .header__subheader{
+  }
+}
