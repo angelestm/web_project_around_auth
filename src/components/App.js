@@ -27,12 +27,6 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   
-  // useEffect(() => {
-  //   api.getURL("/users/me").then((userInfo) => {
-  //     setCurrentUser(userInfo);
-  //   });
-  // }, []);
-  
   useEffect(() => {
     api.getURL("/cards").then((cards) => {
       setCards(cards);
@@ -80,24 +74,22 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if(token){
-      getUserInfo(token);
-    }
-    else{
+      getUserInfo();
+    } else {
       navigate("/signin");
     }
   }, []);
   
-  const getUserInfo = (token) => {
-    auth.getToken(token).then(user => {
-      setCurrentUser(user);
-      navigate("/");
-    })
+  const getUserInfo = () => {
+    api.getURL("/users/me").then((userInfo) => {
+      setCurrentUser(userInfo);
+    });
   };
   
   function handleLogin(email, password){
     auth.authorize(email, password).then(({token}) => {
       localStorage.setItem("token", token);
-      getUserInfo(token);
+      getUserInfo();
     })
   }
   
